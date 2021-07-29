@@ -525,7 +525,7 @@ focus = USA_support_general_mcclellan }
 		icon = GFX_focus_generic_self_management
 		prerequisite = { focus = USA_the_anaconda_plan }
 		relative_position_id = USA_the_anaconda_plan
-		x = 2
+		x = 0
 		y = 1
 		cost = 10
 
@@ -544,6 +544,63 @@ focus = USA_support_general_mcclellan }
 		
 		completion_reward = {
 			add_ideas = march_to_the_sea
+		}
+	}
+
+	focus = {
+		id = USA_naval_invasions
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_the_anaconda_plan }
+		prerequisite = { focus = USA_ironclad_effort }
+		relative_position_id = USA_the_anaconda_plan
+		x = 2
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			add_ideas = naval_invasions
+		}
+	}
+
+	focus = {
+		id = USA_ironclad_effort
+		icon = GFX_focus_generic_self_management
+		x = 15
+		y = 0
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			navy_experience = 50
+			add_building_construction = {
+				type = dockyard
+				level = 3
+			}
 		}
 	}
 }
