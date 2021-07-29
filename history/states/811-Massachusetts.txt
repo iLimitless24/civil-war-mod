@@ -1,0 +1,25 @@
+state={
+	id=811
+	name="STATE_811"
+
+	state_category = metropolis
+
+	history={
+		owner = USA
+		buildings = {
+			infrastructure = 7
+			industrial_complex = 4
+			arms_factory = 3
+			dockyard = 2
+		}
+		add_core_of = USA
+		victory_points = {
+			6732 25 
+		}
+	}
+
+	provinces={
+		715 718 905 908 3710 3906 6732 
+	}
+	manpower=410355
+}

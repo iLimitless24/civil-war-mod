@@ -1,0 +1,549 @@
+﻿### search_filters = {FOCUS_FILTER_POLITICAL}
+### search_filters = {FOCUS_FILTER_RESEARCH}
+### search_filters = {FOCUS_FILTER_INDUSTRY}
+### search_filters = {FOCUS_FILTER_STABILITY}
+### search_filters = {FOCUS_FILTER_WAR_SUPPORT}
+### search_filters = {FOCUS_FILTER_MANPOWER}
+### search_filters = {FOCUS_FILTER_ANNEXATION}
+### search_filters = {FOCUS_FILTER_USA_CONGRESS}
+
+focus_tree = {
+	id = usa_focus
+	
+	country = {
+		factor = 1000
+		
+		modifier = {
+			add = 10
+			tag = USA
+		}
+		
+		modifier = {
+			add = 10
+			original_tag = USA
+		}
+	}
+	continuous_focus_position = { x = 50 y = 1600 }
+	default = no
+
+	focus = {
+		id = USA_preserve_the_union
+		icon = GFX_focus_generic_self_management
+		x = 2
+		y = 0
+		offset = {
+			x = -12
+			y = 0
+		}
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_ideas = a_willing_nation
+			add_war_support = 0.05
+		}
+	}
+
+	focus = {
+		id = USA_federalism
+		icon = GFX_focus_generic_self_management
+		x = -1
+		y = 1
+		prerequisite = { focus = USA_preserve_the_union }
+		mutually_exclusive = { focus = "USA_states_rights" }
+		relative_position_id = USA_preserve_the_union
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 150
+			add_stability = -0.05
+		}
+	}
+
+	focus = {
+		id = USA_states_rights
+		icon = GFX_focus_generic_self_management
+		x = 1
+		y = 1
+		prerequisite = { focus = USA_preserve_the_union }
+		mutually_exclusive = { focus = "USA_federalism" }
+		relative_position_id = USA_preserve_the_union
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_stability = 0.05
+		}
+	}
+
+	focus = {
+		id = USA_condemn_slavery
+		icon = GFX_focus_generic_self_management
+		x = 0
+		y = 1
+		prerequisite = { focus = USA_federalism }
+		relative_position_id = USA_federalism
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			CSA = { add_state_claim = 373 }
+			CSA = { add_state_claim = 369 }
+			CSA = { add_state_claim = 807 }
+			CSA = { add_state_claim = 361 }
+			CSA = { add_state_claim = 808 }
+			add_timed_idea = {
+				idea = defend_the_slaves
+				days = 45
+			}
+		}
+	}
+
+	focus = {
+		id = USA_defend_slavery
+		icon = GFX_focus_generic_self_management
+		x = 0
+		y = 1
+		prerequisite = { focus = USA_states_rights }
+		relative_position_id = USA_states_rights
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_war_support = -0.1
+			remove_ideas = a_nation_divided
+		}
+	}
+
+	focus = {
+		id = USA_southern_sympathies
+		icon = GFX_focus_generic_self_management
+		x = 0
+		y = 1
+		prerequisite = { focus = USA_defend_slavery }
+		relative_position_id = USA_defend_slavery
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_timed_idea = {
+				idea = southern_sympathies
+				days = 150
+			}
+		}
+	}
+
+	focus = {
+		id = USA_northern_identity
+		icon = GFX_focus_generic_self_management
+		x = 0
+		y = 1
+		prerequisite = { focus = USA_condemn_slavery }
+		relative_position_id = USA_condemn_slavery
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_timed_idea = {
+				idea = northern_identity
+				days = 150
+			}
+		}
+	}
+
+	focus = {
+		id = USA_appease_europe
+		icon = GFX_focus_generic_self_management
+		x = 1
+		y = 1
+		prerequisite = { focus = USA_northern_identity 
+		focus = USA_southern_sympathies }
+		relative_position_id = USA_northern_identity
+		cost = 5
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+
+	focus = {
+		id = USA_strangle_the_cotton_trade
+		icon = GFX_focus_generic_self_management
+		x = -2
+		y = 1
+		prerequisite = { focus = USA_appease_europe }
+		relative_position_id = USA_appease_europe
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			CSA = { add_ideas = crippled_economy }
+		}
+	}
+
+	focus = {
+		id = USA_let_blacks_fight
+		icon = GFX_focus_generic_self_management
+		x = 2
+		y = 1
+		prerequisite = { focus = USA_appease_europe }
+		prerequisite = { focus = USA_war_department }
+		relative_position_id = USA_appease_europe
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			add_ideas = blacks_in_the_army
+			add_manpower = 50000
+			add_war_support = 0.15
+		}
+	}
+
+	focus = {
+		id = USA_war_department
+		icon = GFX_focus_generic_self_management
+		x = 9
+		y = 0
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			army_experience = 20
+			add_command_power = 20
+			361 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			} 
+		}
+	}
+
+	focus = {
+		id = USA_propose_13_amendment
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_let_blacks_fight }
+		relative_position_id = USA_let_blacks_fight
+		x = 0
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			
+		}
+	}
+
+	focus = {
+		id = USA_emancipation_proclamation
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_propose_13_amendment }
+		relative_position_id = USA_propose_13_amendment
+		x = 0
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			swap_ideas = {
+				add_idea = emancipation_proclamation
+				remove_idea = blacks_in_the_army
+			}
+			add_war_support = 0.15
+			add_stability = 0.1
+		}
+	}
+
+	focus = {
+		id = USA_support_general_grant
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_war_department }
+		mutually_exclusive = { focus = "USA_support_general_mcclellan" }
+		relative_position_id = USA_war_department
+		x = -1
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 1
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			
+		}
+	}
+
+	focus = {
+		id = USA_support_general_mcclellan
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_war_department }
+		mutually_exclusive = { focus = "USA_support_general_grant" }
+		relative_position_id = USA_war_department
+		x = 1
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			
+		}
+	}
+
+	focus = {
+		id = USA_the_anaconda_plan
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_support_general_grant
+focus = USA_support_general_mcclellan }
+		relative_position_id = USA_support_general_grant
+		x = 1
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			
+		}
+	}
+
+	focus = {
+		id = USA_through_the_mississippi_river
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_the_anaconda_plan }
+		relative_position_id = USA_the_anaconda_plan
+		x = -2
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			373 = {
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+				}
+			} 
+		}
+	}
+
+	focus = {
+		id = USA_march_to_the_sea
+		icon = GFX_focus_generic_self_management
+		prerequisite = { focus = USA_the_anaconda_plan }
+		relative_position_id = USA_the_anaconda_plan
+		x = 2
+		y = 1
+		cost = 10
+
+		ai_will_do = {
+			factor = 100
+		}
+		
+		bypass = {
+
+		}
+
+		cancel_if_invalid = yes
+		continue_if_invalid = no
+		available_if_capitulated = no
+		search_filters = {FOCUS_FILTER_POLITICAL}
+		
+		completion_reward = {
+			add_ideas = march_to_the_sea
+		}
+	}
+}

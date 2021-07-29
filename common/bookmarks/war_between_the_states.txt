@@ -1,0 +1,24 @@
+bookmarks = {
+	bookmark = {
+		name = "WAR_BETWEEN_THE_STATES_NAME"
+		desc = "WAR_BETWEEN_THE_STATES_DESC"
+		date = 1861.5.20.12
+		picture = "GFX_interface_select_date_1861"
+		default_country = "USA"
+		default = yes
+		
+		"USA"={
+			history = "USA_GATHERING_STORM_DESC"
+			ideology = democratic
+			ideas = {
+				preserve_the_union
+				a_nation_divided
+			}
+			focuses = {
+				USA_war_plan_black
+				USA_limited_intervention
+				USA_reestablish_the_gold_standard
+			}
+		}
+	}
+}

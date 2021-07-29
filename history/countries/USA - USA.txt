@@ -1,0 +1,48 @@
+﻿capital = 361
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+}
+
+set_convoys = 20
+
+set_research_slots = 3
+set_stability = 0.42
+set_war_support = 0.22
+set_politics = {
+	ruling_party = northern_republican
+	last_election = "1860.11.6"
+	election_frequency = 48
+	elections_allowed = yes
+}
+
+set_popularities = {
+	northern_republican = 71
+	northern_democratic = 29
+}
+
+add_ideas = {
+	preserve_the_union
+	a_nation_divided
+}
+
+add_opinion_modifier = {
+	target = CSA
+	modifier = large_decrease
+}
+
+create_country_leader = {
+	name = "Abraham Lincoln"
+	desc = "Abraham Lincoln became the United States’ 16th President in 1861, issuing the Emancipation Proclamation that declared forever free those slaves within the Confederacy in 1863."
+	picture = "gfx/leaders/USA/Portrait_USA_Abraham_Lincoln.dds"
+	ideology = northern_republican_conservatism
+	traits = {
+		man_of_the_people
+	}
+}
+
+declare_war_on = {
+	target = CSA
+	type = annex_everything
+}
