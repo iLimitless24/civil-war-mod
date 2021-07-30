@@ -340,6 +340,7 @@ focus_tree = {
 				add_building_construction = {
 					type = arms_factory
 					level = 1
+					instant_build = yes
 				}
 			} 
 		}
@@ -515,6 +516,7 @@ focus = USA_support_general_mcclellan }
 				add_building_construction = {
 					type = arms_factory
 					level = 1
+					instant_build = yes
 				}
 			} 
 		}
@@ -597,10 +599,27 @@ focus = USA_support_general_mcclellan }
 		
 		completion_reward = {
 			navy_experience = 50
-			add_building_construction = {
-				type = dockyard
-				level = 3
+			809 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
 			}
+			810 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			} 
+			811 = {
+				add_building_construction = {
+					type = dockyard
+					level = 1
+					instant_build = yes
+				}
+			} 
 		}
 	}
 }
